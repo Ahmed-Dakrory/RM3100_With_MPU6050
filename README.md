@@ -1,7 +1,7 @@
 Python RM3100
 =============
 
-This project contains a python module for interfacing with SPI RM3100 from user space via the spidev linux kernel driver.
+This project contains a python module for interfacing with SPI RM3100 integrated with MPU6050 from user space via the spidev linux kernel driver.
 
 All code is MIT licensed unless explicitly stated otherwise.
 
@@ -16,16 +16,40 @@ Usage
 -----
 
 ```python
-from rm3100  import RM3100
+
+from MpuRm3100 import IMU
+import time
 
 DRDY = 27 #GPIO 27
 SSN = 17 #GPIO 17
+imu = IMU(SSN,DRDY)
 
-print("Start..........")
+imu.start()
 
-rm3100 = RM3100(17,27)
 while True:
-    data = rm3100.getHeading()
-    if data != None:
-        print(data)
+    time.sleep(0.01)
+    if imu.Readings !=None:
+        print(imu.Readings['Yaw'])
+		
+```
+
+```Connection
+The MPU6050 to RPI
+SDA --> SDA
+SCL --> SCL
+VCC --> 3.3V
+GND --> GND
+
+The RM3100 to RPI
+MOSI --> MOSI
+MISO --> MISO
+SSN --> GPIO PIN(17 for example)
+DRDY --> GPIO PIN(27 for example)
+VCC --> 3.3V
+GND --> GND
+SCK --> SCLK
+
+first make sure for the directions to be as shown
+
+![](Directions.jpg)
 ```

@@ -51,5 +51,7 @@ SCK --> SCLK
 
 first make sure for the directions to be as shown
 
-![alt text](https://raw.githubusercontent.com/Ahmed-Dakrory/RM3100_With_MPU6050/master/Directions.jpg)
+
 ```
+
+![alt text](https://raw.githubusercontent.com/Ahmed-Dakrory/RM3100_With_MPU6050/master/Directions.jpg)
